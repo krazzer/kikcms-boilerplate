@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+assets/bower_components
+assets/node_modules
+cache
+storage
+vendor
+!vendor/kiksaus/*
+env

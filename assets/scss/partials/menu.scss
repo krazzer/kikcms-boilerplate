@@ -1,0 +1,23 @@
+@import "../includes/variables";
+
+nav {
+    @include clearFix();
+    margin-bottom: 20px;
+
+    ul {
+        padding: 0;
+        margin: 0;
+
+        li {
+            float: left;
+            padding: 10px;
+            list-style: none;
+            background-color: #eee;
+            margin-right: 5px;
+
+            &.selected{
+                background-color: #ddd;
+            }
+        }
+    }
+}

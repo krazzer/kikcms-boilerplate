@@ -1,0 +1,9 @@
+{# @var helper \KikCMS\Services\Website\FrontendHelper #}
+{# @var page \KikCMS\Classes\Frontend\FullPage #}
+
+{#---------- EXAMPLE menu ----------#}
+{% block menuEXAMPLE %}
+    <a href="{{ page.url }}">
+        <span class="title">{{ page.name }}</span>
+    </a>
+{% endblock %}

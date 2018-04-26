@@ -1,0 +1,29 @@
+{# @var helper \KikCMS\Services\Website\FrontendHelper #}
+
+{% extends '@kikcms/frontend/base.twig' %}
+
+{% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/app.css"/>
+
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icon.png">
+
+    <script type="text/javascript" src="/js/vendor.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div class="logo">
+        <img src="/images/logo.png" />
+    </div>
+
+    <nav>
+        {{ helper.menu('main')|raw }}
+    </nav>
+
+    <div id="body">
+        {% block templateBody '' %}
+    </div>
+{% endblock %}
