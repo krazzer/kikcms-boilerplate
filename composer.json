@@ -1,0 +1,19 @@
+{
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:kiksaus/kikcms-2.git"
+    },
+    {
+      "type": "git",
+      "url": "git@bitbucket.org:kiksaus/kikcms-core.git"
+    }
+  ],
+  "require": {
+    "kiksaus/kikcms": "@dev",
+    "kiksaus/kikcms-core": "@dev"
+  },
+  "config": {
+    "discard-changes": true
+  }
+}
