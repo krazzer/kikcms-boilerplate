@@ -5,5 +5,5 @@ assets/node_modules
 cache
 storage
 vendor
-!vendor/kiksaus/*
 env
+public_html/cmsassets
