@@ -2,7 +2,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "git@bitbucket.org:kiksaus/kikcms-2.git"
+      "url": "git@bitbucket.org:kiksaus/kikcms.git"
     },
     {
       "type": "git",
