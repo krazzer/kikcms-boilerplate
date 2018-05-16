@@ -184,6 +184,24 @@ CREATE TABLE `finder_file` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
+--  Table structure for `finder_permission`
+-- ----------------------------
+CREATE TABLE `finder_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(16) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `file_id` int(11) DEFAULT NULL,
+  `right` tinyint(4) DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `role` (`role`,`file_id`) USING BTREE,
+  UNIQUE KEY `user_id` (`user_id`,`file_id`) USING BTREE,
+  KEY `file_id` (`file_id`),
+  KEY `role_2` (`role`),
+  CONSTRAINT `finder_permission_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `finder_permission_ibfk_2` FOREIGN KEY (`file_id`) REFERENCES `finder_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=360 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
 --  Table structure for `ga_day_visit`
 -- ----------------------------
 DROP TABLE IF EXISTS `ga_day_visit`;
