@@ -1,7 +1,7 @@
 <?php
 
-use KikCMS\Classes\DbService;
 use KikCMS\Classes\Translator;
+use KikCmsCore\Services\DbService;
 use Phalcon\Cli\Task;
 
 /**
