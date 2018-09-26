@@ -27,7 +27,7 @@ class TemplateFields extends TemplateFieldsBase
     public function getFields(): array
     {
         return [
-            'content' => (new WysiwygField('content', 'Inhoud pagina', [new PresenceOf()]))->storePage(),
+            'content' => (new WysiwygField('content*:value', 'Inhoud pagina', [new PresenceOf()])),
         ];
     }
 }
