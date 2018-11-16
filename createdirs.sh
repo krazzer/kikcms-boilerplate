@@ -12,6 +12,7 @@ mkdir -p cache/cache
 mkdir -p cache/metadata
 mkdir -p cache/twig
 mkdir -p storage
+mkdir -p storage/keyvalue
 mkdir -p storage/media
 mkdir -p storage/media/default
 mkdir -p env
