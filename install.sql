@@ -73,7 +73,7 @@ CREATE TABLE `cms_page_language` (
   `language_code` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `active` tinyint(1) DEFAULT '1',
   `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `seo_title` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `seo_description` text CHARACTER SET utf8,
   `seo_keywords` text CHARACTER SET utf8,
@@ -239,7 +239,7 @@ INSERT INTO `cms_page` (id, parent_id, alias, template, display_order, `key`, ty
   ('4', '5', null, 'default', '2', null, 'page', '1', '4', '5', null, null, NOW(), NOW());
 
 INSERT INTO `cms_page_language_content` (page_id, language_code, field, value) VALUES (6, 'nl', 'content', 'Helaas! De door uw opgevraagde pagina kon niet worden gevonden.');
-INSERT INTO `cms_page_language` (page_id, language_code, active, name, url) VALUES (6, 'nl', 1, 'Pagina niet gevonden', 'page-not-found');
+INSERT INTO `cms_page_language` (page_id, language_code, active, name, slug) VALUES (6, 'nl', 1, 'Pagina niet gevonden', 'page-not-found');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
