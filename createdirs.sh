@@ -30,3 +30,6 @@ username = root
 password = [DB-PASS]
 dbname = [DB-NAAM]
 host = mysql" >> env/config.ini
+
+rm install.sql
+rm createdirs.sh
