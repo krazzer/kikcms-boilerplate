@@ -167,8 +167,8 @@ COMMIT;
 -- ----------------------------
 --  Table structure for `finder_file`
 -- ----------------------------
-DROP TABLE IF EXISTS `finder_file`;
-CREATE TABLE `finder_file` (
+DROP TABLE IF EXISTS `cms_file`;
+CREATE TABLE `cms_file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
   `extension` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
@@ -186,7 +186,7 @@ CREATE TABLE `finder_file` (
 -- ----------------------------
 --  Table structure for `finder_permission`
 -- ----------------------------
-CREATE TABLE `finder_permission` (
+CREATE TABLE `cms_file_permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role` varchar(16) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -198,14 +198,14 @@ CREATE TABLE `finder_permission` (
   KEY `file_id` (`file_id`),
   KEY `role_2` (`role`),
   CONSTRAINT `finder_permission_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `finder_permission_ibfk_2` FOREIGN KEY (`file_id`) REFERENCES `finder_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `finder_permission_ibfk_2` FOREIGN KEY (`file_id`) REFERENCES `cms_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=360 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `ga_day_visit`
 -- ----------------------------
-DROP TABLE IF EXISTS `ga_day_visit`;
-CREATE TABLE `ga_day_visit` (
+DROP TABLE IF EXISTS `cms_analytics_day`;
+CREATE TABLE `cms_analytics_day` (
   `date` date NOT NULL,
   `visits` int(11) NOT NULL DEFAULT '0',
   `unique_visits` int(11) NOT NULL,
@@ -215,8 +215,8 @@ CREATE TABLE `ga_day_visit` (
 -- ----------------------------
 --  Table structure for `ga_visit_data`
 -- ----------------------------
-DROP TABLE IF EXISTS `ga_visit_data`;
-CREATE TABLE `ga_visit_data` (
+DROP TABLE IF EXISTS `cms_analytics_metric`;
+CREATE TABLE `cms_analytics_metric` (
   `date` date NOT NULL,
   `type` enum('source','os','page','browser','location','resolution') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'source',
   `value` varchar(128) CHARACTER SET latin1 NOT NULL DEFAULT '',
