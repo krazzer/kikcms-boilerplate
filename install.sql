@@ -153,6 +153,8 @@ CREATE TABLE `cms_user` (
   `blocked` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `role` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_me` blob DEFAULT NULL,
+  `settings` blob DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `role` (`role`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
