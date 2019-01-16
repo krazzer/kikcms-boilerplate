@@ -163,7 +163,7 @@ CREATE TABLE `cms_user` (
 --  Records of `cms_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cms_user` VALUES ('1', 'info@kiksaus.nl', null, '0', '2017-09-20 09:53:09', 'developer');
+INSERT INTO `cms_user` VALUES ('1', 'info@kiksaus.nl', null, '0', '2017-09-20 09:53:09', 'developer', null, null);
 COMMIT;
 
 -- ----------------------------
@@ -220,8 +220,8 @@ CREATE TABLE `cms_analytics_day` (
 DROP TABLE IF EXISTS `cms_analytics_metric`;
 CREATE TABLE `cms_analytics_metric` (
   `date` date NOT NULL,
-  `type` enum('source','os','page','browser','location','resolution') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'source',
-  `value` varchar(128) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `type` enum('source','os','page','browser','location','resolution') NOT NULL DEFAULT 'source',
+  `value` varchar(128) NOT NULL DEFAULT '',
   `visits` int(11) NOT NULL,
   PRIMARY KEY (`date`,`type`,`value`),
   KEY `date` (`date`),
