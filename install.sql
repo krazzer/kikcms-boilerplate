@@ -182,6 +182,7 @@ CREATE TABLE `cms_file` (
   `size` int(11) NOT NULL DEFAULT '0',
   `user_id` int(11) DEFAULT NULL,
   `key` VARCHAR(255) DEFAULT NULL,
+  `hash` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
