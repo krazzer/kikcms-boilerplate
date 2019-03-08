@@ -15,6 +15,9 @@ mkdir -p storage
 mkdir -p storage/keyvalue
 mkdir -p storage/media
 mkdir -p storage/media/default
+mkdir -p public_html/media
+mkdir -p public_html/media/files
+mkdir -p public_html/media/thumbs
 mkdir -p env
 
 if [ -f env/config.ini ]; then
