@@ -9,7 +9,7 @@ use Phalcon\Image\Adapter;
 class MediaResize extends MediaResizeBase
 {
     /**
-     * Will automatically resize an image called by /finder/thumb/example/1 (where 1 is the finder_file id)
+     * Will automatically resize an image called by twig shortcut: mediaFile(fileId)
      *
      * @param Adapter $image
      */
