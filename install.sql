@@ -221,7 +221,7 @@ CREATE TABLE `cms_analytics_day` (
 DROP TABLE IF EXISTS `cms_analytics_metric`;
 CREATE TABLE `cms_analytics_metric` (
   `date` date NOT NULL,
-  `type` enum('source','os','page','browser','location','resolution') NOT NULL DEFAULT 'source',
+  `type` enum('source','os','page','browser','location','resolutionDesktop','resolutionTablet','resolutionMobile') NOT NULL DEFAULT 'source',
   `value` varchar(128) NOT NULL DEFAULT '',
   `visits` int(11) NOT NULL,
   PRIMARY KEY (`date`,`type`,`value`),
