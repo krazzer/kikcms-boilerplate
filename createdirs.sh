@@ -26,13 +26,15 @@ fi
 
 echo "[application]
 env = dev
-sendmailCommand = /usr/local/bin/mhsendmail -t --smtp-addr mail:1025
 
 [database]
 username = root
 password = [DB-PASS]
 dbname = [DB-NAAM]
-host = mysql" >> env/config.ini
+host = mysql
 
-rm install.sql
+[mailer]
+host = mail
+port = 1025" >> env/config.ini
+
 rm createdirs.sh
