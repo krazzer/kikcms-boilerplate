@@ -30,7 +30,7 @@ env = dev
 [database]
 username = root
 password = [DB-PASS]
-dbname = [DB-NAAM]
+dbname = [DB-NAME]
 host = mysql
 
 [mailer]
