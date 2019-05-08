@@ -163,7 +163,7 @@ CREATE TABLE `cms_user` (
 --  Records of `cms_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `cms_user` VALUES ('1', 'info@kiksaus.nl', null, '0', '2017-09-20 09:53:09', 'developer', null, null);
+INSERT INTO `cms_user` VALUES ('1', 'info@kiksaus.nl', null, '0', NOW(), 'developer', null, null);
 COMMIT;
 
 -- ----------------------------
