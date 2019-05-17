@@ -4,6 +4,7 @@ namespace Website\Classes;
 
 
 use KikCMS\Classes\Frontend\Extendables\WebsiteSettingsBase;
+use KikCMS\ObjectLists\MenuGroupMap;
 use Phalcon\Mvc\Router\Group;
 
 /**
@@ -28,9 +29,9 @@ class WebsiteSettings extends WebsiteSettingsBase
     /**
      * @inheritdoc
      */
-    public function getMenuGroups(array $menuGroups): array
+    public function getMenuGroupMap(MenuGroupMap $menuGroupMap): MenuGroupMap
     {
-        return $menuGroups;
+        return $menuGroupMap;
     }
 
     /**
