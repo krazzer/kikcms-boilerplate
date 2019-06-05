@@ -160,13 +160,6 @@ CREATE TABLE `cms_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
---  Records of `cms_user`
--- ----------------------------
-BEGIN;
-INSERT INTO `cms_user` VALUES ('1', 'info@kiksaus.nl', null, '0', NOW(), 'developer', null, null);
-COMMIT;
-
--- ----------------------------
 --  Table structure for `finder_file`
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_file`;
