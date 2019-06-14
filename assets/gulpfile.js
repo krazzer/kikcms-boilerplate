@@ -2,9 +2,9 @@ var sass       = require('gulp-sass');
 var concat     = require('gulp-concat');
 var uglify     = require('gulp-uglify');
 var minify     = require('gulp-minify');
-var cssnano    = require('gulp-cssnano');
 var sourcemaps = require('gulp-sourcemaps');
 var plumber    = require('gulp-plumber');
+var postcss    = require('postcss');
 var gulp       = require('gulp');
 
 var output = '../public_html/';
@@ -16,7 +16,7 @@ gulp.task('styles', function () {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(concat('app.css'))
-        .pipe(cssnano())
+        .pipe(postcss[cssnano])
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(output + 'css'));
 });
@@ -29,7 +29,7 @@ gulp.task('vendorStyles', function () {
         .pipe(plumber())
         .pipe(concat('vendor.css'))
         .pipe(minify())
-        .pipe(cssnano())
+        .pipe(postcss[cssnano])
         .pipe(gulp.dest(output + 'css'));
 });
 
@@ -59,6 +59,6 @@ gulp.task('vendorScripts', function () {
 
 // Watch Files For Changes
 gulp.task('watch', function () {
-    gulp.watch(['js/*.js', '../vendor/kiksaus/kikcms-*/assets/js/*.js'], ['scripts']);
-    gulp.watch(['scss/*.scss', 'scss/**/*.scss', '../vendor/kiksaus/kikcms-*/assets/scss/*.scss'], ['styles']);
+    gulp.watch(['js/*.js', '../vendor/kiksaus/kikcms-*/assets/js/*.js'], gulp.series('scripts'));
+    gulp.watch(['scss/*.scss', 'scss/**/*.scss', '../vendor/kiksaus/kikcms-*/assets/scss/*.scss'], gulp.series('styles'));
 });
