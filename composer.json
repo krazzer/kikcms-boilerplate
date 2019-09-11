@@ -2,11 +2,11 @@
   "repositories": [
     {
       "type": "git",
-      "url": "git@bitbucket.org:kiksaus/kikcms.git"
+      "url": "git@github.com:krazzer/kikcms.git"
     },
     {
       "type": "git",
-      "url": "git@bitbucket.org:kiksaus/kikcms-core.git"
+      "url": "git@bgithub.com:krazzer/kikcms-core.git"
     }
   ],
   "require": {
