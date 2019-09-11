@@ -176,7 +176,8 @@ CREATE TABLE `cms_file` (
   `user_id` int(11) DEFAULT NULL,
   `key` VARCHAR(255) DEFAULT NULL,
   `hash` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `cms_file_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `cms_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
