@@ -6,7 +6,7 @@
     },
     {
       "type": "git",
-      "url": "git@bgithub.com:krazzer/kikcms-core.git"
+      "url": "git@github.com:krazzer/kikcms-core.git"
     }
   ],
   "require": {
