@@ -230,7 +230,7 @@ CREATE TABLE `cms_analytics_metric` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `cms_page` (id, parent_id, alias, template, display_order, `key`, type, level, lft, rgt, link, menu_max_level, created_at, updated_at) VALUES
-  ('5', null, null, null, null, 'main', 'menu', '0', '1', '6', null, '1', NOW(), NOW()),
+  ('5', null, null, null, 1, 'main', 'menu', '0', '1', '6', null, '1', NOW(), NOW()),
   ('6', null, null, 'default', null, 'page-not-found', 'page', null, null, null, null, null, NOW(), NOW()),
   ('3', '5', null, 'default', '1', 'default', 'page', '1', '2', '3', null, null, NOW(), NOW()),
   ('4', '5', null, 'default', '2', null, 'page', '1', '4', '5', null, null, NOW(), NOW());
