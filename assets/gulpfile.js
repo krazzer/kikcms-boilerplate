@@ -4,7 +4,8 @@ var uglify     = require('gulp-uglify');
 var minify     = require('gulp-minify');
 var sourcemaps = require('gulp-sourcemaps');
 var plumber    = require('gulp-plumber');
-var postcss    = require('postcss');
+var postcss    = require('gulp-postcss');
+var cssnano    = require('cssnano');
 var gulp       = require('gulp');
 var browserSync = require('browser-sync').create();
 
@@ -17,7 +18,7 @@ gulp.task('styles', function () {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(concat('app.css'))
-        .pipe(postcss[cssnano])
+        .pipe(postcss([cssnano]))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(output + 'css'));
 });
@@ -30,15 +31,15 @@ gulp.task('vendorStyles', function () {
         .pipe(plumber())
         .pipe(concat('vendor.css'))
         .pipe(minify())
-        .pipe(postcss[cssnano])
+        .pipe(postcss([cssnano]))
         .pipe(gulp.dest(output + 'css'));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function () {
     return gulp.src([
-        '../vendor/kiksaus/kikcms/resources/js/utils.js',
-        '../vendor/kiksaus/kikcms/resources/js/kikcms.js',
+        '../vendor/kiksaus/kikcms/assets/js/utils.js',
+        '../vendor/kiksaus/kikcms/assets/js/kikcms.js',
         'js/app.js'
     ])
         .pipe(plumber())
@@ -66,6 +67,9 @@ gulp.task('watch', function () {
     });
 
     gulp.watch(['js/*.js', '../vendor/kiksaus/kikcms-*/assets/js/*.js'], gulp.series('scripts'))
+        .on('change', browserSync.reload);
+
+    gulp.watch(['../app/Views/*.twig', '../app/Views/**/*.twig', '../app/Views/**/**/*.twig'])
         .on('change', browserSync.reload);
 
     gulp.watch(['scss/*.scss', 'scss/**/*.scss', '../vendor/kiksaus/kikcms-*/assets/scss/*.scss'], gulp.series('styles'))
