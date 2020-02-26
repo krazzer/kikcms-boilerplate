@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "kiksaus/kikcms": "@dev",
+    "kiksaus/kikcms": "dev-production",
     "kiksaus/kikcms-core": "@dev"
   },
   "config": {
