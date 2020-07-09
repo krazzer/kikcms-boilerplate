@@ -1,7 +1,6 @@
 @import "../includes/variables";
 
 nav {
-    @include clearFix();
     margin-bottom: 20px;
 
     ul {
