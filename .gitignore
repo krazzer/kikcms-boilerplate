@@ -1,9 +1,5 @@
 .DS_Store
 .idea
 assets/node_modules
-#cache
-#storage
-vendor
-#env
 public_html/cmsassets
-#public_html/media
+vendor
