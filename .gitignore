@@ -1,10 +1,9 @@
 .DS_Store
 .idea
-assets/bower_components
 assets/node_modules
-cache
-storage
+#cache
+#storage
 vendor
-env
+#env
 public_html/cmsassets
-public_html/media
+#public_html/media
