@@ -7,9 +7,6 @@ use KikCMS\Classes\Frontend\Extendables\WebsiteSettingsBase;
 use KikCMS\ObjectLists\MenuGroupMap;
 use Phalcon\Mvc\Router\Group;
 
-/**
- * @inheritdoc
- */
 class WebsiteSettings extends WebsiteSettingsBase
 {
     /**
