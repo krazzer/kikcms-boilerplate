@@ -1,5 +1,5 @@
 .DS_Store
 .idea
 assets/node_modules
-public_html/cmsassets
 vendor
+public_html/cmsassets

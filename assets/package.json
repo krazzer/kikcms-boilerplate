@@ -28,7 +28,8 @@
     "postcss-preset-env": "^6.7.0",
     "sass-loader": "^8.0.2",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "read-ini-file": "^3.0.0"
   },
   "repository": {
     "type": "git",
@@ -43,8 +44,5 @@
     "ES6+",
     "live reload",
     "Sass"
-  ],
-  "dependencies": {
-    "read-ini-file": "^3.0.0"
-  }
+  ]
 }
