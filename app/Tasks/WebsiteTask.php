@@ -1,5 +1,7 @@
 <?php
 
+namespace Website\Tasks;
+
 use KikCMS\Classes\Translator;
 use KikCmsCore\Services\DbService;
 use Phalcon\Cli\Task;
