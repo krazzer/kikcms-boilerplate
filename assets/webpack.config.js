@@ -1,8 +1,11 @@
 const path                 = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin    = require('browser-sync-webpack-plugin');
+const loadIniFile          = require('read-ini-file')
 
 const devMode = process.env.NODE_ENV !== 'production';
+const config  = loadIniFile.sync(path.join(__dirname, '../env/config.ini'));
+const port    = parseInt(config.docker.id);
 
 module.exports = {
     mode: devMode ? 'development' : 'production',
@@ -36,8 +39,8 @@ module.exports = {
         }),
         new BrowserSyncPlugin({
             host: 'localhost',
-            port: 3028,
-            proxy: 'https://localhost:9028',
+            port: (3000 + port),
+            proxy: 'https://localhost:' + (9000 + port),
             files: [
                 {match: ['../app/Views/**/*.twig']}
             ]

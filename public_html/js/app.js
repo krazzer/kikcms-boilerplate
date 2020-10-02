@@ -1,1 +1,122 @@
-function Class(){}function capitalize(e){return e.charAt(0).toUpperCase()+e.slice(1)}Class.prototype.construct=function(){},Class.__asMethod__=function(e,t){return function(){var n=this.$;this.$=t;var a=e.apply(this,arguments);return this.$=n,a}},Class.extend=function(e){var t=function(){arguments[0]!==Class&&this.construct.apply(this,arguments)},n=new this(Class),a=this.prototype;for(var r in e){var i=e[r];i instanceof Function&&(i=Class.__asMethod__(i,a)),n[r]=i}return n.$=a,t.prototype=n,t.extend=this.extend,t},$.fn.highlight=function(e){function t(e,n){var a=0;if(3==e.nodeType){var r=e.data.toUpperCase().indexOf(n);if((r-=e.data.substr(0,r).toUpperCase().length-e.data.substr(0,r).length)>=0){var i=document.createElement("span");i.className="highlight";var s=e.splitText(r);s.splitText(n.length);var o=s.cloneNode(!0);i.appendChild(o),s.parentNode.replaceChild(i,s),a=1}}else if(1==e.nodeType&&e.childNodes&&!/(script|style)/i.test(e.tagName))for(var l=0;l<e.childNodes.length;++l)l+=t(e.childNodes[l],n);return a}return this.length&&e&&e.length?this.each(function(){t(this,e.toUpperCase())}):this},$.fn.searchAble=function(e){var t="",n="",a=this,r=a.next(".glyphicon-remove");r.click(function(){a.val(""),a.trigger("keyup")}),a.on("keyup",function(i){var s=a.val();if(""==s?r.hide():r.show(),i.keyCode==keyCode.ENTER)return n=s,void e(s);t=s,setTimeout(function(){s==t&&s!=n&&(n=s,e(s))},500)})},$.fn.serializeObject=function(){var e={},t=this.serializeArray();return $.each(t,function(){void 0!==e[this.name]?(e[this.name].push||(e[this.name]=[e[this.name]]),e[this.name].push(this.value||"")):e[this.name]=this.value||""}),e};var keyCode={BACKSPACE:8,COMMA:188,DELETE:46,DOWN:40,END:35,ENTER:13,ESCAPE:27,HOME:36,LEFT:37,PAGE_DOWN:34,PAGE_UP:33,PERIOD:190,RIGHT:39,SPACE:32,TAB:9,UP:38,SHIFT:16,S:83},KikCmsClass=Class.extend({baseUri:null,translations:{},errorMessages:{},isDev:!1,maxFileUploads:null,maxFileSize:null,maxFileSizeString:null,renderables:[],initRenderables:function(e){var t=this;e=void 0!==e?e:null,$("[data-renderable]").each(function(){var n=$(this);if("true"!=n.attr("data-rendered")){var a=$.parseJSON(n.attr("data-renderable")),r=new window[a.class];$.each(a.properties,function(e,t){r[e]=t}),e&&(r.parent=e),r.init(),n.attr("data-rendered",!0),t.renderables.push(r)}})},action:function(e,t,n,a,r,i){var s=!1,o=this,l=0;i=void 0!==i?i:null,setTimeout(function(){0==s&&KikCMS.showLoader()},250);var c={url:e,type:"post",dataType:"json",data:t,success:function(e,t,a){s=!0,o.hideLoader(),n(e,t,a),o.initRenderables(i)},error:function(e){if(0==e.readyState&&0==e.status&&l<2)return l++,void h();s=!0,o.showError(e,a)}};void 0!==r&&r&&(c.cache=!1,c.contentType=!1,c.processData=!1,c.xhr=r);var h=function(){$.ajax(c)};h()},showError:function(e,t){void 0!==t&&t(),this.hideLoader();var n=this.translations["error."+e.status+".title"]?e.status:"unknown";this.isDev&&440!=e.status?$("#ajaxDebugger").html(e.responseText).show():alert(this.translations["error."+n+".title"]+"\n\n"+this.translations["error."+n+".description"])},showLoader:function(){this.getLoader().addClass("show")},hideLoader:function(){this.getLoader().removeClass("show")},getLoader:function(){return $("#cmsLoader")},removeExtension:function(e){return e.replace(/\.[^\/.]+$/,"")},tl:function(e,t){var n=this.translations[e];return $.each(t,function(e,t){n=n.replace(new RegExp(":"+e,"g"),t)}),n},toSlug:function(e){e=e.replace(/^\s+|\s+$/g,"").toLowerCase();for(var t="àáäâèéëêìíïîòóöôùúüûñç·/_,:;",n="aaaaeeeeiiiioooouuuunc------",a=0,r=t.length;a<r;a++)e=e.replace(new RegExp(t.charAt(a),"g"),n.charAt(a));return e=e.replace(/[^a-z0-9 -]/g,"").replace(/\s+/g,"-").replace(/-+/g,"-")}}),KikCMS=new KikCmsClass;$(function(){KikCMS.initRenderables()}),$(function(){});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./js/app.js":
+/*!*******************!*\
+  !*** ./js/app.js ***!
+  \*******************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// import a class example:\n// import {AppGallery} from './classes/gallery';\n// do stuff\n\n//# sourceURL=webpack:///./js/app.js?");
+
+/***/ }),
+
+/***/ "./styles/app.scss":
+/*!*************************!*\
+  !*** ./styles/app.scss ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./styles/app.scss?");
+
+/***/ }),
+
+/***/ 0:
+/*!*******************************************!*\
+  !*** multi ./js/app.js ./styles/app.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("__webpack_require__(/*! ./js/app.js */\"./js/app.js\");\nmodule.exports = __webpack_require__(/*! ./styles/app.scss */\"./styles/app.scss\");\n\n\n//# sourceURL=webpack:///multi_./js/app.js_./styles/app.scss?");
+
+/***/ })
+
+/******/ });
