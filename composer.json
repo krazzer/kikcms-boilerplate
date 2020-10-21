@@ -1,17 +1,7 @@
 {
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:krazzer/kikcms.git"
-    },
-    {
-      "type": "git",
-      "url": "git@github.com:krazzer/kikcms-core.git"
-    }
-  ],
   "require": {
-    "kiksaus/kikcms": "dev-production",
-    "kiksaus/kikcms-core": "@dev"
+    "kiksaus/kikcms": "dev-master",
+    "kiksaus/kikcms-core": "dev-master"
   },
   "config": {
     "discard-changes": true
