@@ -1,22 +1,28 @@
 body {
-  padding: 50px; }
+  padding: 50px;
+}
 
 .logo {
-  margin-bottom: 20px; }
-  .logo img {
-    height: 47px; }
+  margin-bottom: 20px;
+}
+.logo img {
+  height: 47px;
+}
 
 nav {
-  margin-bottom: 20px; }
-  nav ul {
-    padding: 0;
-    margin: 0; }
-    nav ul li {
-      display: inline-block;
-      padding: 10px;
-      list-style: none;
-      background-color: #eee;
-      margin-right: 5px; }
-      nav ul li.selected {
-        background-color: #ddd; }
-
+  margin-bottom: 20px;
+}
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+nav ul li {
+  display: inline-block;
+  padding: 10px;
+  list-style: none;
+  background-color: #eee;
+  margin-right: 5px;
+}
+nav ul li.selected {
+  background-color: #ddd;
+}
