@@ -7,12 +7,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `cms_language`;
 CREATE TABLE `cms_language` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `code` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `code` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Records of `cms_language`
@@ -29,14 +29,14 @@ CREATE TABLE `cms_page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) DEFAULT NULL,
   `alias` int(11) DEFAULT NULL,
-  `template` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `template` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `display_order` int(11) DEFAULT NULL,
-  `key` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type` enum('page','menu','link','alias') CHARACTER SET utf8 NOT NULL DEFAULT 'page',
+  `key` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` enum('page','menu','link','alias') CHARACTER SET utf8mb4 NOT NULL DEFAULT 'page',
   `level` int(11) DEFAULT NULL,
   `lft` int(11) DEFAULT NULL,
   `rgt` int(11) DEFAULT NULL,
-  `link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `menu_max_level` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -48,7 +48,7 @@ CREATE TABLE `cms_page` (
   KEY `alias` (`alias`),
   CONSTRAINT `cms_page_ibfk_1` FOREIGN KEY (`alias`) REFERENCES `cms_page` (`id`),
   CONSTRAINT `cms_page_ibfk_2` FOREIGN KEY (`parent_id`) REFERENCES `cms_page` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `cms_page_content`
@@ -56,12 +56,12 @@ CREATE TABLE `cms_page` (
 DROP TABLE IF EXISTS `cms_page_content`;
 CREATE TABLE `cms_page_content` (
   `page_id` int(11) NOT NULL,
-  `field` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `value` longtext COLLATE utf8_unicode_ci,
+  `field` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` longtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`page_id`,`field`),
   KEY `field` (`field`) USING BTREE,
   CONSTRAINT `cms_page_content_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `cms_page_language`
@@ -70,20 +70,20 @@ DROP TABLE IF EXISTS `cms_page_language`;
 CREATE TABLE `cms_page_language` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `page_id` int(11) NOT NULL,
-  `language_code` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `language_code` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `active` tinyint(1) DEFAULT '1',
-  `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `seo_title` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `seo_description` text CHARACTER SET utf8,
-  `seo_keywords` text CHARACTER SET utf8,
+  `name` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seo_title` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `seo_description` text CHARACTER SET utf8mb4,
+  `seo_keywords` text CHARACTER SET utf8mb4,
   PRIMARY KEY (`id`),
   UNIQUE KEY `page_id` (`page_id`,`language_code`),
   KEY `language_code` (`language_code`),
   KEY `language_code_2` (`language_code`),
   CONSTRAINT `cms_page_language_ibfk_1` FOREIGN KEY (`language_code`) REFERENCES `cms_language` (`code`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `cms_page_language_ibfk_2` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Records of `cms_page_language`
@@ -98,16 +98,16 @@ COMMIT;
 DROP TABLE IF EXISTS `cms_page_language_content`;
 CREATE TABLE `cms_page_language_content` (
   `page_id` int(11) NOT NULL,
-  `language_code` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
-  `field` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `value` longtext COLLATE utf8_unicode_ci,
+  `language_code` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `field` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` longtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`page_id`,`language_code`,`field`),
   UNIQUE KEY `page_id` (`page_id`,`language_code`,`field`) USING BTREE,
   KEY `language_code` (`language_code`),
   KEY `field` (`field`) USING BTREE,
   CONSTRAINT `cms_page_language_content_ibfk_1` FOREIGN KEY (`language_code`) REFERENCES `cms_language` (`code`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `cms_page_language_content_ibfk_2` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Records of `cms_page_language_content`
@@ -126,7 +126,7 @@ CREATE TABLE `cms_translation_key` (
   `db` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `key` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `cms_translation_value`
@@ -134,13 +134,13 @@ CREATE TABLE `cms_translation_key` (
 DROP TABLE IF EXISTS `cms_translation_value`;
 CREATE TABLE `cms_translation_value` (
   `key_id` int(11) NOT NULL,
-  `language_code` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `language_code` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` longtext CHARACTER SET utf8mb4,
   PRIMARY KEY (`key_id`,`language_code`),
   KEY `language_code` (`language_code`),
   CONSTRAINT `cms_translation_value_ibfk_1` FOREIGN KEY (`language_code`) REFERENCES `cms_language` (`code`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `cms_translation_value_ibfk_2` FOREIGN KEY (`key_id`) REFERENCES `cms_translation_key` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `cms_user`
@@ -148,16 +148,16 @@ CREATE TABLE `cms_translation_value` (
 DROP TABLE IF EXISTS `cms_user`;
 CREATE TABLE `cms_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
   `blocked` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `role` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
+  `role` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_me` blob DEFAULT NULL,
   `settings` blob DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `role` (`role`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `finder_file`
@@ -178,7 +178,7 @@ CREATE TABLE `cms_file` (
   `hash` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `cms_file_ibfk_1` FOREIGN KEY (`folder_id`) REFERENCES `cms_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 --  Table structure for `finder_permission`
@@ -196,7 +196,7 @@ CREATE TABLE `cms_file_permission` (
   KEY `role_2` (`role`),
   CONSTRAINT `finder_permission_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `cms_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `finder_permission_ibfk_2` FOREIGN KEY (`file_id`) REFERENCES `cms_file` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=360 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=360 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `ga_day_visit`
@@ -207,7 +207,7 @@ CREATE TABLE `cms_analytics_day` (
   `visits` int(11) NOT NULL DEFAULT '0',
   `unique_visits` int(11) NOT NULL,
   PRIMARY KEY (`date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 --  Table structure for `ga_visit_data`
@@ -216,14 +216,14 @@ DROP TABLE IF EXISTS `cms_analytics_metric`;
 CREATE TABLE `cms_analytics_metric` (
   `date` date NOT NULL,
   `type` enum('source','os','page','browser','location','resolutionDesktop','resolutionTablet','resolutionMobile') NOT NULL DEFAULT 'source',
-  `value` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `value` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '',
   `visits` int(11) NOT NULL,
   PRIMARY KEY (`date`,`type`,`value`),
   KEY `date` (`date`),
   KEY `type` (`type`),
   KEY `value` (`value`),
   KEY `visits` (`visits`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 --  Records of `cms_page`
