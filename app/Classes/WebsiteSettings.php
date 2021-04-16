@@ -38,4 +38,12 @@ class WebsiteSettings extends WebsiteSettingsBase
     {
         return [];
     }
+
+    /**
+     * @return string|null
+     */
+    public function getCustomCss(): ?string
+    {
+        return '/css/cms.css';
+    }
 }

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./js/app.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -94,28 +94,6 @@
 /***/ (function(module, exports) {
 
 eval("// import a class example:\n// import {AppGallery} from './classes/gallery';\n// do stuff\n\n//# sourceURL=webpack:///./js/app.js?");
-
-/***/ }),
-
-/***/ "./styles/app.scss":
-/*!*************************!*\
-  !*** ./styles/app.scss ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./styles/app.scss?");
-
-/***/ }),
-
-/***/ 0:
-/*!*******************************************!*\
-  !*** multi ./js/app.js ./styles/app.scss ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("__webpack_require__(/*! ./js/app.js */\"./js/app.js\");\nmodule.exports = __webpack_require__(/*! ./styles/app.scss */\"./styles/app.scss\");\n\n\n//# sourceURL=webpack:///multi_./js/app.js_./styles/app.scss?");
 
 /***/ })
 

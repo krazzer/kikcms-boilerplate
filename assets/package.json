@@ -29,7 +29,8 @@
     "sass": "^1.22.10",
     "sass-loader": "^8.0.2",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-fix-style-only-entries": "^0.6.1"
   },
   "repository": {
     "type": "git",

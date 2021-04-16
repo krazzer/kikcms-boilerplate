@@ -1,7 +1,9 @@
-const path                 = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const BrowserSyncPlugin    = require('browser-sync-webpack-plugin');
-const loadIniFile          = require('read-ini-file')
+const path                      = require('path');
+const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
+const BrowserSyncPlugin         = require('browser-sync-webpack-plugin');
+const loadIniFile               = require('read-ini-file')
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+
 
 const devMode = process.env.NODE_ENV !== 'production';
 const config  = loadIniFile.sync(path.join(__dirname, '../env/config.ini'));
@@ -9,11 +11,11 @@ const port    = parseInt(config.docker.id);
 
 module.exports = {
     mode: devMode ? 'development' : 'production',
-    entry: ['./js/app.js', './styles/app.scss'],
+    entry: {app: './js/app.js', style: './styles/app.scss', cms: './styles/cms.scss'},
     output: {
         path: path.resolve(__dirname, '../public_html'),
         publicPath: '/',
-        filename: 'js/app.js'
+        filename: 'js/[name].js'
     },
     module: {
         rules: [
@@ -34,8 +36,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new FixStyleOnlyEntriesPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'css/app.css'
+            filename: 'css/[name].css'
         }),
         new BrowserSyncPlugin({
             host: 'localhost',
