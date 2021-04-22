@@ -239,4 +239,22 @@ INSERT INTO `cms_page_language_content` (page_id, language_code, field, value) V
 INSERT INTO `cms_page_language` (page_id, language_code, active, name, slug) VALUES (6, 'nl', 1, 'Pagina niet gevonden', 'page-not-found');
 COMMIT;
 
+-- ----------------------------
+--  Add base table for page images
+-- ----------------------------
+CREATE TABLE `cms_page_image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `image_id` int(11) NOT NULL,
+  `display_order` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `display_order` (`display_order`),
+  KEY `page_id` (`page_id`),
+  KEY `image_id` (`image_id`),
+  CONSTRAINT `cms_page_image_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `cms_page_image_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `cms_file` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 SET FOREIGN_KEY_CHECKS = 1;
