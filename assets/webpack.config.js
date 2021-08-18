@@ -3,7 +3,8 @@ const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
 const BrowserSyncPlugin         = require('browser-sync-webpack-plugin');
 const loadIniFile               = require('read-ini-file')
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
-
+const CssMinimizerPlugin        = require("css-minimizer-webpack-plugin");
+const UglifyJsPlugin            = require('uglifyjs-webpack-plugin')
 
 const devMode = process.env.NODE_ENV !== 'production';
 const config  = loadIniFile.sync(path.join(__dirname, '../env/config.ini'));
@@ -16,6 +17,13 @@ module.exports = {
         path: path.resolve(__dirname, '../public_html'),
         publicPath: '/',
         filename: 'js/[name].js'
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin(),
+            new UglifyJsPlugin(),
+        ],
     },
     module: {
         rules: [
