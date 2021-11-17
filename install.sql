@@ -1,5 +1,6 @@
+BEGIN;
+
 SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 --  Table structure for `cms_language`
@@ -17,9 +18,7 @@ CREATE TABLE `cms_language` (
 -- ----------------------------
 --  Records of `cms_language`
 -- ----------------------------
-BEGIN;
 INSERT INTO `cms_language` VALUES ('1', 'nl', 'Nederlands', '1');
-COMMIT;
 
 -- ----------------------------
 --  Table structure for `cms_page`
@@ -49,6 +48,16 @@ CREATE TABLE `cms_page` (
   CONSTRAINT `cms_page_ibfk_1` FOREIGN KEY (`alias`) REFERENCES `cms_page` (`id`),
   CONSTRAINT `cms_page_ibfk_2` FOREIGN KEY (`parent_id`) REFERENCES `cms_page` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+--  Records of `cms_page`
+-- ----------------------------
+INSERT INTO `cms_page` (id, parent_id, alias, template, display_order, `key`, type, level, lft, rgt, link,
+                        menu_max_level, created_at, updated_at)
+VALUES ('5', null, null, null, 1, 'main', 'menu', '0', '1', '6', null, '1', NOW(), NOW()),
+       ('6', null, null, 'default', null, 'page-not-found', 'page', null, null, null, null, null, NOW(), NOW()),
+       ('3', '5', null, 'default', '1', 'default', 'page', '1', '2', '3', null, null, NOW(), NOW()),
+       ('4', '5', null, 'default', '2', null, 'page', '1', '4', '5', null, null, NOW(), NOW());
 
 -- ----------------------------
 --  Table structure for `cms_page_content`
@@ -88,9 +97,12 @@ CREATE TABLE `cms_page_language` (
 -- ----------------------------
 --  Records of `cms_page_language`
 -- ----------------------------
-BEGIN;
-INSERT INTO `cms_page_language` VALUES ('3', '3', 'nl', '1', 'Home', 'home', null, null, null), ('4', '4', 'nl', '1', 'Pagina 2', 'pagina-2', null, null, null), ('5', '5', 'nl', '1', 'Hoofdmenu', null, null, null, null);
-COMMIT;
+INSERT INTO `cms_page_language`
+VALUES ('3', '3', 'nl', '1', 'Home', 'home', null, null, null),
+       ('4', '4', 'nl', '1', 'Pagina 2', 'pagina-2', null, null, null),
+       ('5', '5', 'nl', '1', 'Hoofdmenu', null, null, null, null);
+INSERT INTO `cms_page_language` (page_id, language_code, active, name, slug)
+VALUES (6, 'nl', 1, 'Pagina niet gevonden', 'page-not-found');
 
 -- ----------------------------
 --  Table structure for `cms_page_language_content`
@@ -226,20 +238,6 @@ CREATE TABLE `cms_analytics_metric` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
---  Records of `cms_page`
--- ----------------------------
-BEGIN;
-INSERT INTO `cms_page` (id, parent_id, alias, template, display_order, `key`, type, level, lft, rgt, link, menu_max_level, created_at, updated_at) VALUES
-  ('5', null, null, null, 1, 'main', 'menu', '0', '1', '6', null, '1', NOW(), NOW()),
-  ('6', null, null, 'default', null, 'page-not-found', 'page', null, null, null, null, null, NOW(), NOW()),
-  ('3', '5', null, 'default', '1', 'default', 'page', '1', '2', '3', null, null, NOW(), NOW()),
-  ('4', '5', null, 'default', '2', null, 'page', '1', '4', '5', null, null, NOW(), NOW());
-
-INSERT INTO `cms_page_language_content` (page_id, language_code, field, value) VALUES (6, 'nl', 'content', 'Helaas! De door uw opgevraagde pagina kon niet worden gevonden.');
-INSERT INTO `cms_page_language` (page_id, language_code, active, name, slug) VALUES (6, 'nl', 1, 'Pagina niet gevonden', 'page-not-found');
-COMMIT;
-
--- ----------------------------
 --  Add base table for page images
 -- ----------------------------
 CREATE TABLE `cms_page_image` (
@@ -257,4 +255,4 @@ CREATE TABLE `cms_page_image` (
   CONSTRAINT `cms_page_image_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `cms_file` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-SET FOREIGN_KEY_CHECKS = 1;
+COMMIT;
