@@ -1,4 +1,10 @@
-// import a class example:
-// import {AppGallery} from './classes/gallery';
+// import {AppModule} from './classes/appModule';
 
-// do stuff
+class App {
+    init() {
+        //this.module = (new AppModule(this)).init();
+    }
+}
+
+const app = new App;
+app.init();
