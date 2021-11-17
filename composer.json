@@ -1,7 +1,7 @@
 {
   "require": {
-    "kiksaus/kikcms": "dev-master",
-    "kiksaus/kikcms-core": "dev-master"
+    "kiksaus/kikcms": "dev-phalcon4",
+    "kiksaus/kikcms-core": "dev-phalcon4"
   },
   "config": {
     "discard-changes": true

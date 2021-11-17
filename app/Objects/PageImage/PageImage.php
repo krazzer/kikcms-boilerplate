@@ -2,6 +2,7 @@
 
 namespace Website\Objects\PageImage;
 
+use KikCMS\Models\Page;
 use KikCmsCore\Classes\Model;
 
 class PageImage extends Model
@@ -19,5 +20,7 @@ class PageImage extends Model
     public function initialize()
     {
         parent::initialize();
+
+        $this->belongsTo(self::FIELD_PAGE_ID, Page::class, Page::FIELD_ID, ['alias' => 'page']);
     }
 }
