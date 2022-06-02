@@ -1,8 +1,8 @@
-// import {AppModule} from './classes/appModule';
+import {AppComponent} from './components/appComponent';
 
 class App {
     init() {
-        //this.module = (new AppModule(this)).init();
+        this.component = (new AppComponent(this)).init();
     }
 }
 
