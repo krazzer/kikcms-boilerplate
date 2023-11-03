@@ -9,6 +9,7 @@ const UglifyJsPlugin            = require('uglifyjs-webpack-plugin')
 const devMode = process.env.NODE_ENV !== 'production';
 const config  = loadIniFile.sync(path.join(__dirname, '../env/config.ini'));
 const port    = parseInt(config.docker.id);
+const key     = config.docker.key;
 
 module.exports = {
     mode: devMode ? 'development' : 'production',
@@ -49,7 +50,8 @@ module.exports = {
             filename: 'css/[name].css'
         }),
         new BrowserSyncPlugin({
-            host: 'localhost',
+            host: key + '.test',
+            open: 'external',
             port: (3000 + port),
             proxy: 'https://localhost:' + (9000 + port),
             files: [
