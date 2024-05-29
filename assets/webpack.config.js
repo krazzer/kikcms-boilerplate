@@ -1,10 +1,10 @@
-const path                      = require('path');
-const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
-const BrowserSyncPlugin         = require('browser-sync-webpack-plugin');
 const loadIniFile               = require('read-ini-file')
+const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
+const UglifyJsPlugin            = require('uglifyjs-webpack-plugin')
+const BrowserSyncPlugin         = require('browser-sync-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const CssMinimizerPlugin        = require("css-minimizer-webpack-plugin");
-const UglifyJsPlugin            = require('uglifyjs-webpack-plugin')
+const path                      = require('path');
 
 const devMode = process.env.NODE_ENV !== 'production';
 const config  = loadIniFile.sync(path.join(__dirname, '../env/config.ini'));
