@@ -6,7 +6,7 @@ namespace Website\Classes;
 use KikCMS\Classes\Frontend\Extendables\TemplateFieldsBase;
 use KikCMS\Classes\Page\Template;
 use KikCMS\Classes\WebForm\Fields\WysiwygField;
-use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Filter\Validation\Validator\PresenceOf;
 
 class TemplateFields extends TemplateFieldsBase
 {
@@ -27,7 +27,7 @@ class TemplateFields extends TemplateFieldsBase
     public function getFields(): array
     {
         return [
-            'content' => (new WysiwygField('content*:value', 'Inhoud pagina', [new PresenceOf()])),
+            'content' => (new WysiwygField('content*:value', 'Inhoud pagina', [new PresenceOf])),
         ];
     }
 }

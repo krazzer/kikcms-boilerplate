@@ -1,6 +1,6 @@
 {
   "require": {
-    "kiksaus/kikcms": "dev-master",
+    "kiksaus/kikcms": "dev-phalcon5",
     "kiksaus/kikcms-core": "dev-master"
   },
   "config": {
