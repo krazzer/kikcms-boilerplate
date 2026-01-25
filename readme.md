@@ -37,6 +37,20 @@ host = mysql
 ```
 15. Now you're good to go! Test if the app is working in the browser: https://localhost:9001 (or another port if you chose to)
 
+## Setup local asset update
+This is required to update js/css when you change js or scss source files.
+
+1. npm install
+2. cd vendor/kiksaus/kikcms/assets && bower install
+3. Add to your env/config.ini, where the id is the number your port ends with (e.g. 1 if 9001):
+
+```ini
+[docker]
+id = 1
+```
+
+4. Run `webpack --watch` from `package.json`
+
 # Sync
 
 Media:
