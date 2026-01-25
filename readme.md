@@ -1,6 +1,6 @@
 # Setup dev env
 
-Warning: You might blow a few things up. Don't worry, this is expected behaviour.
+For Windows users, most commands won't work using cmd, so use WSL and/or Git Bash.
 
 1. Clone repo: `git clone git@github.com:krazzer/[REPONAME].git`
 
