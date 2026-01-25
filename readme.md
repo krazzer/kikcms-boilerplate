@@ -40,9 +40,9 @@ host = mysql
 ## Setup local asset update
 This is required to update js/css when you change js or scss source files.
 
-1. npm install
-2. cd vendor/kiksaus/kikcms/assets && bower install
-3. Add to your env/config.ini, where the id is the number your port ends with (e.g. 1 if 9001):
+1. `npm install`
+2. `cd vendor/kiksaus/kikcms/assets && bower install`
+3. Add to your `env/config.ini`, where the id is the number your port ends with (e.g. 1 if 9001):
 
 ```ini
 [docker]
