@@ -2,28 +2,42 @@
 
 For Windows users, most commands won't work using cmd, so use WSL and/or Git Bash.
 
-Skip step 2, 3, 4, 8 & 10 if you set up a dev env before.
+## General setup
 
-1. Clone repo: `git clone git@github.com:krazzer/[REPONAME].git`
-2. Create kikdev dirs: `mkdir ~/.docker-kikdev && mkdir ~/.docker-kikdev/mysql && mkdir ~/.docker-kikdev/logs`
-3. Install Docker: https://www.docker.com/get-started
-4. Create docker network: `docker network create kikdev`
-5. From the project root, run `composer install`
-6. Create symlink for assets: `ln -s ../vendor/kiksaus/kikcms/resources public_html/cmsassets`
-7. Add folders: `mkdir cache && mkdir public_html/media && mkdir public_html/media/files && mkdir public_html/media/thumbs && mkdir storage`
-8. Create MySQL and Mailhog containers, replace <password> with your desired password (run from the project root): `PASS=<password> docker-compose -f vendor/kiksaus/kikcms/docker/docker-compose-services.yml up -d`
-9. Create app container, replacing <password> with desired password again, and <port> with the desired port (e.g., 9001), and <name> with the name of your project (run from project root again): `SITE_PORT=<port> docker-compose -f vendor/kiksaus/kikcms/docker/docker-compose-site.yml -p <name> up -d`
-10. Use your favorite GUI like (SequalPro, Navicat, Workbench, PHPMyAdmin, etc.) and connect to the MySQL container with these settings, where <password> is the same as you used to set up the MySQL container:
+Skip these steps if you have set up a dev environment before.
+
+1. Create kikdev dirs: `mkdir ~/.docker-kikdev && mkdir ~/.docker-kikdev/mysql && mkdir ~/.docker-kikdev/logs`
+2. Install Docker: https://www.docker.com/get-started
+3. Create docker network: `docker network create kikdev`
+4. Create MySQL and Mailhog containers, replace `<password>` with your desired password (run from the project root): `PASS=<password> docker-compose -f vendor/kiksaus/kikcms/docker/docker-compose-services.yml up -d`
+5. Use your favorite GUI like (SequalPro, Navicat, Workbench, PHPMyAdmin, etc.) and connect to the MySQL container with these settings, where `<password>` is the same as you used to set up the MySQL container:
     ```
     Host: localhost  
     Port: 3306
     User: root
     Pass: <password>
     ```
-11. Create a database
-12. Now run the SQL from the SQL file you got from the dev.
-13. Place the media files you got from the dev in `storage/media`
-14. Now create `env/config.ini` file and replace `PASS` and `DBNAME`
+6. Download https://github.com/phalcon/ide-stubs and put the code somewhere you can easily identify.
+   
+## Project setup
+
+1. Clone repo: `git clone git@github.com:krazzer/[REPONAME].git`
+
+2. From the project root, run `composer install`
+3. Create symlink for assets: `ln -s ../vendor/kiksaus/kikcms/resources public_html/cmsassets`
+4. Add folders: `mkdir cache && mkdir public_html/media && mkdir public_html/media/files && mkdir public_html/media/thumbs && mkdir storage`
+5. Create app container, replacing `<password>` with desired password again, and `<port>` with the desired port (e.g., 9001), and `<name>` with the name of your project (run from project root again): `SITE_PORT=<port> docker-compose -f vendor/kiksaus/kikcms/docker/docker-compose-site.yml -p <name> up -d`
+6. Use your favorite GUI (SequalPro, Navicat, Workbench, PHPMyAdmin, etc.) and connect to the MySQL container with these settings, where `<password>` is the same as you used to set up the MySQL container:
+    ```
+    Host: localhost  
+    Port: 3306
+    User: root
+    Pass: <password>
+    ```
+7. Create a database
+8. Now run the SQL from the SQL file you got from the dev.
+9. Place the media files you got from the dev in `storage/media`
+10. Now create `env/config.ini` file and replace `PASS` and `DBNAME`
     ```
     [application]
     env = dev
@@ -38,8 +52,9 @@ Skip step 2, 3, 4, 8 & 10 if you set up a dev env before.
     host = mail
     port = 1025
     ```
-15. Add any additional config variables provided by the dev
-16. Now you're good to go! Test if the app is working in the browser: https://localhost:9001 (or another port if you chose to)
+11. Add any additional config variables provided by the dev
+12. In PHPStorm > settings > PHP, add the Phalcon source to your include path (from https://github.com/phalcon/ide-stubs)
+13. Now you're good to go! Test if the app is working in the browser: https://localhost:9001 (or another port if you chose to)
 
 ## Setup local asset update
 This is required to update js/css when you change js or scss source files.
