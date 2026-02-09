@@ -17,7 +17,7 @@ Skip these steps if you have set up a dev environment before.
     User: root
     Pass: <password>
     ```
-6. Download https://github.com/phalcon/ide-stubs and put the code somewhere you can easily identify.
+6. Download https://github.com/phalcon/ide-stubs and put the code somewhere you can identify.
    
 ## Project setup
 
