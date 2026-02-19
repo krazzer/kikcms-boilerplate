@@ -11,7 +11,7 @@ Skip these steps if you have set up a dev environment before.
 3. Install Docker: https://www.docker.com/get-started
 4. Create docker network: `docker network create kikdev`
 5. Install composer (https://getcomposer.org), and from the project root, run `composer install`
-6. Create MySQL and Mailhog containers, replace `<password>` with your desired password (run from the project root): `PASS=<password> docker compose -f vendor/kiksaus/kikcms/docker/docker-compose-services.yml up -d`
+6. Create MySQL and Mailhog containers, replace `<password>` with your desired password (run from the project root): `PASS=<password> docker compose -f vendor/kiksaus/kikcms/docker/docker-compose-services.yml -p kikcms-services up -d`
 7. Use your favorite GUI like (SequalPro, Navicat, Workbench, PHPMyAdmin, etc.) and connect to the MySQL container with these settings, where `<password>` is the same as you used to set up the MySQL container:
     ```
     Host: localhost  
