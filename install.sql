@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `cms_page_language_content`;
 CREATE TABLE `cms_page_language_content` (
   `page_id` int(11) NOT NULL,
   `language_code` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `field` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `field` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` longtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`page_id`,`language_code`,`field`),
   UNIQUE KEY `page_id` (`page_id`,`language_code`,`field`) USING BTREE,
